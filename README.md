@@ -15,3 +15,8 @@
 - libpqについて
 
     [パッケージ: libpq-dev (16.3-1 など)](https://packages.debian.org/ja/sid/libpq-dev)
+
+# Webサーバーの起動方法
+- 以下のコマンドを実行
+  - bundle exec ruby [Web上で実行したいrubyファイル]
+  - [Ruby の Sinatra を使ってとりあえず Web アプリを立ち上げてみる](https://qiita.com/k-ta-yamada/items/9e35c5f8b31862267e01)
