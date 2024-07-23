@@ -1,8 +1,29 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: containers/ruby/Dockerfile
     tty: true
     ports:
       - 3000:3000
     volumes:
       - ./:/app
+  db:
+    build:
+      context: .
+      dockerfile: containers/mysql/Dockerfile
+    container_name: mysql
+    restart: always
+    platform: linux/x86_64
+    ports:
+      - 3306:3306
+    volumes: 
+      - ./containers/mysql/data:/var/lib/mysql
+      - ./containers/mysql/init:/docker-entrypoint-initdb.d
+      - ./containers/mysql/my.cnf:/etc/mysql/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+  
